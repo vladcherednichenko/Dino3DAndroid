@@ -10,6 +10,7 @@ import com.vlad.dino3d.utils.AntialiasingConfigurator
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.pow
+import kotlin.math.sqrt
 
 class GameSurfaceView : GLSurfaceView, SurfaceInterface{
 
@@ -92,7 +93,7 @@ class GameSurfaceView : GLSurfaceView, SurfaceInterface{
                 touchCenterX = (xPointer2 + xPointer1) / 2f
                 touchCenterY = (yPointer2 + yPointer1) / 2f
                 if (startingDistanceBetweenPointers == 0f) {
-                    startingDistanceBetweenPointers = Math.sqrt(
+                    startingDistanceBetweenPointers = sqrt(
                         (xPointer2 - xPointer1).toDouble().pow(2.0) +
                                 (yPointer2 - yPointer1).toDouble().pow(2.0)
                     ).toFloat()
