@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".Obj3DView">
+        <activity android:name=".Game3DActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

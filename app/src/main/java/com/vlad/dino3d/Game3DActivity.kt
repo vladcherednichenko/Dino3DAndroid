@@ -1,6 +1,10 @@
 package com.vlad.dino3d
 
+import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.Log
 import android.view.MotionEvent
+import androidx.core.graphics.rotationMatrix
 import com.vlad.dino3d.min3d.Utils.DEG
 import com.vlad.dino3d.min3d.core.Object3dContainer
 import com.vlad.dino3d.min3d.core.RendererActivity
@@ -8,11 +12,12 @@ import com.vlad.dino3d.min3d.objectPrimitives.Box
 import com.vlad.dino3d.min3d.parser.Parser
 import com.vlad.dino3d.min3d.vos.Light
 import com.vlad.dino3d.min3d.vos.LightType
-import kotlin.math.cos
-import kotlin.math.sin
+import com.vlad.dino3d.utils.Utils
+import java.lang.Math.pow
+import kotlin.math.*
 
 
-class Obj3DView : RendererActivity() {
+class Game3DActivity : RendererActivity() {
 
     private var previousTouchCenterX = 0f
     private var previousTouchCenterY = 0f
@@ -30,12 +35,18 @@ class Obj3DView : RendererActivity() {
     private val _k: Object3dContainer? = null
     private var _dx = 0f
     private var _dy = 0f
-    private var _rotX = 0f
-    private var _rotY = 0f
+    private var camRotationX = 0f
+    private var camRotationY = 0f
     private var objModel: Object3dContainer? = null
     private var light: Light? = null
-    override fun initScene() {
 
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+
+        Utils.hideDefaultControls(this)
+        super.onCreate(savedInstanceState, persistentState)
+    }
+
+    override fun initScene() {
 
         val parser = Parser.createParser(
             Parser.Type.OBJ,
@@ -44,12 +55,13 @@ class Obj3DView : RendererActivity() {
         parser.parse()
         objModel = parser.parsedObject
 
-        objModel?.scale()?.z = .5f
+        objModel?.scale()?.z = .3f
         objModel?.scale()?.y = objModel?.scale()?.z
         objModel?.scale()?.x = objModel?.scale()?.y
 
-        objModel?.position()!!.y -= 15f
-        objModel?.rotation()!!.y += 90f
+
+        objModel?.position()!!.y -= 1f
+        //objModel?.rotation()!!.y += 90f
 
 
         light = Light()
@@ -69,24 +81,19 @@ class Obj3DView : RendererActivity() {
 
     override fun updateScene() {
 
-        _rotX += _dx
-        _rotY += _dy
 
-        val x: Float = sin(_rotX * DEG.toDouble()).toFloat() * 5f
-        val z: Float = cos(_rotX * DEG.toDouble()).toFloat() * 5f
-        val y: Float = sin(_rotY * DEG.toDouble()).toFloat() * 5f
-
-        scene.camera().position.setAll(-x,y,z)
-
-        //scene.camera().position.rotateX(_dx)
-        //scene.camera().position.rotateY( -_dx)
-
-        _dx = 0f
-        _dy = 0f
 
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+
+        if(Settings.enabledCamera) updateCamera(event)
+
+        return true
+
+    }
+
+    private fun updateCamera(event: MotionEvent){
 
         val x = event.x
         val y = event.y
@@ -115,13 +122,24 @@ class Obj3DView : RendererActivity() {
 
         }
 
-        return true
+        camRotationX += _dx
+        camRotationY += _dy
+
+        val radius = 5f
+
+        val camY = sin(camRotationY * DEG.toDouble()).toFloat() * radius
+        val temp = cos(camRotationY * DEG.toDouble()).toFloat() * radius
+        val camX = sin(camRotationX * DEG.toDouble()).toFloat() * temp
+        val camZ = cos(camRotationX * DEG.toDouble()).toFloat() * temp
+
+        scene.camera().position.setAll(-camX,camY,camZ)
+
+
+        _dx = 0f
+        _dy = 0f
 
     }
+    
 
-    private fun resetPointersValues() {
-        startingDistanceBetweenPointers = 0f
-        previousTouchCenterX = 0f
-        previousTouchCenterY = 0f
-    }
+
 }
