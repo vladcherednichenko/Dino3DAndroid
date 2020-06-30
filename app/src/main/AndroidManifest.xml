@@ -22,6 +22,44 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name="com.vlad.dino3d.sample.SplashActivity" android:label="@string/app_name">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <activity android:name="com.vlad.dino3d.sample.ExampleRotatingPlanets" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleMostMinimal" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleVertexColors" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleTextures" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleVerticesVariations" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleRenderType" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleCamera" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleMultipleLights" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleAnimatingVertices" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleSubsetOfFaces" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleAssigningTexturesDynamically" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleTextureWrap" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleMipMap" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleMultiTexture" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleTextureOffset" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleFog" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleTransparentGlSurface" android:label="@string/app_name" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleLoadObjFile" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleLoadObjFileMultiple"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleLoad3DSFile"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleLoadMD2File"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleInsideLayout" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleKeyframeAnimation"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleAccelerometer"></activity>
+com.vlad.dino3d.
+        <!-- Debugging-related activities: -->
+        <activity android:name="com.vlad.dino3d.sample.ScratchActivity" android:label="@string/app_name"></activity>
+        <activity android:name="com.vlad.dino3d.sample.ExampleLightProperties" android:label="@string/app_name"></activity>
+
         <activity
             android:name=".RenderActivity"
             android:screenOrientation="landscape">
